@@ -46,7 +46,9 @@ data:
 {{ toYaml .Values.additionalTrustedPeers | trim | indent 6 }}
 {{- end }}
       name: Kubectl
+{{- if .Values.kubectlClientSecret }}
       secret: {{ .Values.kubectlClientSecret }}
+{{- end }}
 {{- if .Values.additionalStaticClients }}
 {{ toYaml .Values.additionalStaticClients | trim | indent 4 }}
 {{- end }}

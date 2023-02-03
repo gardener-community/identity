@@ -36,7 +36,7 @@ dashboardOrigins:
   - 'https://dashboard.example.org'
   - 'http://localhost:8080'
 dashboardClientSecret: sHq4vLoiQcIWbO3h
-kubectlClientSecret: if6ji0dTFE4rQfj8
+#kubectlClientSecret: if6ji0dTFE4rQfj8
 
 additionalStaticClients: ~
 # - name: additional identity example client

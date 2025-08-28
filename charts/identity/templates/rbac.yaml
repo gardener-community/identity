@@ -7,7 +7,7 @@
 apiVersion: {{ include "rbacversion" . }}
 kind: ClusterRoleBinding
 metadata:
-  name:  garden.sapcloud.io:identity
+  name:  gardener.cloud:identity
   labels:
     app: identity
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -16,7 +16,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: garden.sapcloud.io:identity
+  name: gardener.cloud:identity
 subjects:
 - kind: ServiceAccount
   name: identity
@@ -25,7 +25,7 @@ subjects:
 apiVersion: {{ include "rbacversion" . }}
 kind: ClusterRole
 metadata:
-  name: garden.sapcloud.io:identity
+  name: gardener.cloud:identity
 rules:
 - apiGroups: ["dex.coreos.com"]
   resources: ["*"]

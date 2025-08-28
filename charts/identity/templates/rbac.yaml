@@ -3,10 +3,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 {{- if not .Values.kubeconfig }}
+---
 apiVersion: {{ include "rbacversion" . }}
 kind: ClusterRoleBinding
 metadata:
-  name:  garden.sapcloud.io:identity
+  name:  gardener.cloud:identity
   labels:
     app: identity
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
@@ -15,9 +16,21 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cluster-admin
+  name: gardener.cloud:identity
 subjects:
 - kind: ServiceAccount
   name: identity
   namespace: {{ .Release.Namespace }}
+---
+apiVersion: {{ include "rbacversion" . }}
+kind: ClusterRole
+metadata:
+  name: gardener.cloud:identity
+rules:
+- apiGroups: ["dex.coreos.com"]
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups: ["apiextensions.k8s.io"]
+  resources: ["customresourcedefinitions"]
+  verbs: ["create"]
 {{- end }}

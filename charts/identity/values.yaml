@@ -79,12 +79,13 @@ tls:
     -----END RSA PRIVATE KEY-----
 
 containerSecurityContext:
-  privileged: false
   allowPrivilegeEscalation: false
+  capabilities:
+    drop: [ALL]
+  privileged: false
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1337
   runAsGroup: 1337
-  capabilities:
-    drop:
-      - ALL
+  seccompProfile:
+    type: RuntimeDefault

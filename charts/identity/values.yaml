@@ -77,3 +77,15 @@ tls:
     -----BEGIN RSA PRIVATE KEY-----
     Li4u
     -----END RSA PRIVATE KEY-----
+
+containerSecurityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: [ALL]
+  privileged: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1337
+  runAsGroup: 1337
+  seccompProfile:
+    type: RuntimeDefault
